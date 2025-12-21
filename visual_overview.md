@@ -43,15 +43,15 @@
 ### Layer 2: Operator Action
 
 ```
-         INPUT STATE              Ω-OPERATOR              OUTPUT
+         INPUT STATE              Ω-OPERATOR               OUTPUT
                                     ACTION
     
-    |s⟩, σ = 1/2         ───►     Ω(|s⟩)      ───►     |s⟩  ✓
-    (On critical line)          (Projection)         (Survives)
+    |s⟩, σ = 1/2         ───►     Ω(|s⟩)       ───►     |s⟩  ✓
+    (On critical line)          (Projection)          (Survives)
     
     
-    |s*⟩, σ ≠ 1/2        ───►     Ω(|s*⟩)     ───►      0   ✗
-    (Off critical line)         (Projection)       (Annihilated)
+    |s*⟩, σ ≠ 1/2        ───►     Ω(|s*⟩)      ───►      0   ✗
+    (Off critical line)         (Projection)        (Annihilated)
 ```
 
 ### Layer 3: Energy-Ergotropy Relationship
