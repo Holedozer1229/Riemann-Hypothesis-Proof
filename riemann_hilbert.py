@@ -96,7 +96,10 @@ class RiemannHilbertSpace:
         Returns:
             List of created ZeroStates
         """
-        # First 10 known zeros (imaginary parts) on the critical line
+        # First 10 known non-trivial zeros of the Riemann zeta function
+        # These are the imaginary parts t of zeros at s = 1/2 + it
+        # Values computed to 6 decimal places of precision
+        # Source: LMFDB (L-functions and Modular Forms Database)
         known_zeros_imag = [
             14.134725,
             21.022040,

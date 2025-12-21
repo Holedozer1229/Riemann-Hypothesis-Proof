@@ -10,6 +10,10 @@ from typing import List, Tuple
 from riemann_hilbert import RiemannHilbertSpace, ZeroState
 
 
+# Numerical tolerance for preventing division by zero in ergotropy calculations
+ERGOTROPY_EPSILON = 1e-10
+
+
 class ErgotropyFunctional:
     """
     Implements the global ergotropic work functional W_erg.
@@ -109,7 +113,7 @@ class ErgotropyFunctional:
         )
         
         # Off-critical states create work imbalance
-        imbalance = abs(work_critical - work_off_critical) / (work_critical + 1e-10)
+        imbalance = abs(work_critical - work_off_critical) / (work_critical + ERGOTROPY_EPSILON)
         
         return imbalance < tolerance
     

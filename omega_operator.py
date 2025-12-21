@@ -6,9 +6,19 @@ into the physically allowed subspace where ergotropic work is conserved.
 """
 
 import numpy as np
-from typing import Optional, List
+from typing import Optional, List, Union
 from riemann_hilbert import RiemannHilbertSpace, ZeroState
 from ergotropy import ErgotropyFunctional
+
+
+class StateAnnihilated:
+    """Sentinel class to represent a state annihilated by Ω-projection"""
+    def __repr__(self):
+        return "StateAnnihilated()"
+
+
+# Singleton instance for annihilated states
+ANNIHILATED = StateAnnihilated()
 
 
 class OmegaOperator:
@@ -33,21 +43,22 @@ class OmegaOperator:
         self.hilbert_space = hilbert_space
         self.ergotropy = ErgotropyFunctional(hilbert_space)
     
-    def apply(self, state: ZeroState, state_index: int) -> Optional[ZeroState]:
+    def apply(self, state: ZeroState, state_index: int) -> Union[ZeroState, StateAnnihilated]:
         """
         Apply the Ω-operator to a single state.
         
-        Ω(|s⟩) returns |s⟩ if ergotropy is conserved, otherwise returns None (annihilation).
+        Ω(|s⟩) returns |s⟩ if ergotropy is conserved, 
+        otherwise returns StateAnnihilated (annihilation).
         
         Args:
             state: The zero state to project
             state_index: Index of the state in the Hilbert space
             
         Returns:
-            The state if it conserves ergotropy, None otherwise
+            The state if it conserves ergotropy, StateAnnihilated otherwise
         """
         if self.ergotropy.state_violates_conservation(state, state_index):
-            return None  # State is annihilated
+            return ANNIHILATED  # State is annihilated
         
         return state
     
@@ -62,7 +73,7 @@ class OmegaOperator:
         
         for i, state in enumerate(self.hilbert_space.states):
             projected = self.apply(state, i)
-            if projected is not None:
+            if not isinstance(projected, StateAnnihilated):
                 surviving_states.append(projected)
         
         return surviving_states
@@ -76,9 +87,9 @@ class OmegaOperator:
             state_index: Index of the state in the Hilbert space
             
         Returns:
-            True if Ω(|s⟩) ≠ 0, False otherwise
+            True if Ω(|s⟩) survives, False if annihilated
         """
-        return self.apply(state, state_index) is not None
+        return not isinstance(self.apply(state, state_index), StateAnnihilated)
     
     def verify_critical_line_preservation(self) -> bool:
         """

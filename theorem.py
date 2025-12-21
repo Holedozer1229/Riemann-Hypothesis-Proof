@@ -157,7 +157,8 @@ def main():
     print("Corollary (Spectral Conservation View):")
     print("  ✓ Verified: The critical line is the only ergodically stable manifold")
     print()
-    print("Q.E.D. - The Riemann Hypothesis follows from Ω-ergotropy preservation!")
+    print("Note: This computational model demonstrates the theorem's principles.")
+    print("A complete rigorous proof requires additional mathematical formalization.")
     print("=" * 80)
 
 
