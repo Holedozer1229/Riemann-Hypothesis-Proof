@@ -10,6 +10,7 @@ This repository presents a mathematical proof that the Riemann Hypothesis follow
 
 - **[rigorous_proof.md](rigorous_proof.md)** - Rigorous formalized mathematical proof with complete axiomatics, definitions, lemmas, and formal proofs
 - **[proof.md](proof.md)** - Accessible mathematical exposition with intuitive explanations
+- **[visual_overview.md](visual_overview.md)** - Visual diagrams, conceptual maps, and proof flow charts
 
 ## Theorem Statement
 
@@ -25,8 +26,9 @@ This follows from the fact that the Ω-functional operator projects candidate ze
 ## Repository Structure
 
 ```
-├── rigorous_proof.md     # Rigorous formalized mathematical proof (NEW)
-├── proof.md              # Complete mathematical proof with lemmas and corollaries
+├── rigorous_proof.md     # Rigorous formalized mathematical proof
+├── proof.md              # Accessible mathematical exposition
+├── visual_overview.md    # Visual diagrams and conceptual maps (NEW)
 ├── riemann_hilbert.py    # Hilbert space H_ζ implementation
 ├── ergotropy.py          # Ergotropic work functional W_erg
 ├── omega_operator.py     # Ω-functional operator implementation
