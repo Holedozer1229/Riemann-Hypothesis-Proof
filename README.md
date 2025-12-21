@@ -6,6 +6,11 @@ A novel approach to the Riemann Hypothesis through quantum ergotropy conservatio
 
 This repository presents a mathematical proof that the Riemann Hypothesis follows from the principle of Ω-ergotropy preservation in a specially constructed Hilbert space. The key insight is that only zeros on the critical line Re(s) = 1/2 conserve ergotropic work, while off-line zeros are annihilated by the Ω-functional projection operator.
 
+### Documentation
+
+- **[rigorous_proof.md](rigorous_proof.md)** - Rigorous formalized mathematical proof with complete axiomatics, definitions, lemmas, and formal proofs
+- **[proof.md](proof.md)** - Accessible mathematical exposition with intuitive explanations
+
 ## Theorem Statement
 
 **Theorem (Ω-Ergotropy Preservation Implies RH):**
@@ -20,6 +25,7 @@ This follows from the fact that the Ω-functional operator projects candidate ze
 ## Repository Structure
 
 ```
+├── rigorous_proof.md     # Rigorous formalized mathematical proof (NEW)
 ├── proof.md              # Complete mathematical proof with lemmas and corollaries
 ├── riemann_hilbert.py    # Hilbert space H_ζ implementation
 ├── ergotropy.py          # Ergotropic work functional W_erg
@@ -119,6 +125,22 @@ with ΔW_erg = 0 (ergotropy is never lost)
 ```
 
 ## Key Results
+
+### From Rigorous Proof (rigorous_proof.md)
+
+1. **Theorem 4.1 (Main Result):** Ω-ergotropy conservation implies the Riemann Hypothesis through formal proof using Hilbert space axiomatics.
+
+2. **Lemma 3.1 (Fundamental Correspondence):** The ergotropy-conserving subspace ℰ coincides exactly with the critical line subspace 𝒞.
+
+3. **Lemma 3.2 (Ω-Collapse Criterion):** A zero-state |s⟩ survives Ω-projection if and only if Re(s) = 1/2.
+
+4. **Corollary 4.2 (Uniqueness):** The critical line is the unique ergodically stable manifold in the zero-space.
+
+5. **Proposition 5.1 (Energy Barrier):** Off-critical zeros require infinite energy to stabilize.
+
+6. **Proposition 7.1 (Quantitative Bounds):** Ergotropy deviation is bounded by δ² where δ = |σ - 1/2|.
+
+### From Computational Model (proof.md)
 
 1. **Lemma 1 (Ω-Allowed Zero Condition):** Only states that conserve W_erg survive Ω-projection.
 
