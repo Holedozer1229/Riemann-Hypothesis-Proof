@@ -9,6 +9,9 @@ from scipy.linalg import eigvalsh
 from scipy.special import zeta
 import matplotlib.pyplot as plt
 
+# Constants
+EIGENVALUE_THRESHOLD = 1e-10  # Threshold for filtering numerical zero eigenvalues
+
 
 class QuantumState:
     """Represents a quantum state (density matrix)"""
@@ -26,7 +29,7 @@ class QuantumState:
     def entropy(self):
         """Calculate von Neumann entropy"""
         eigenvalues = eigvalsh(self.rho)
-        eigenvalues = eigenvalues[eigenvalues > 1e-10]  # Remove numerical zeros
+        eigenvalues = eigenvalues[eigenvalues > EIGENVALUE_THRESHOLD]  # Remove numerical zeros
         return -np.sum(eigenvalues * np.log(eigenvalues))
     
     def energy(self, hamiltonian):
@@ -136,12 +139,23 @@ def zeta_functional_approximation(s, n_terms=100):
         
     Returns:
         approximation of zeta(s)
+        
+    Note:
+        This is a simplified approximation. For Re(s) <= 1, the Dirichlet series
+        does not converge and proper analytic continuation should be used.
+        This implementation only works reliably for Re(s) > 1.
     """
-    if np.real(s) <= 1:
-        # Use functional equation for Re(s) <= 1
-        # This is a simplified version
+    if np.real(s) > 1:
         return sum(1/n**s for n in range(1, n_terms+1))
-    return zeta(np.real(s))
+    else:
+        # For Re(s) <= 1, use scipy's implementation which handles analytic continuation
+        # Note: scipy.special.zeta only works for real arguments
+        if np.imag(s) == 0:
+            return zeta(np.real(s))
+        else:
+            # For complex s with Re(s) <= 1, return an approximation
+            # In a full implementation, this would use the functional equation
+            raise NotImplementedError("Complex zeta for Re(s) <= 1 requires full analytic continuation")
 
 
 def spectral_coherence_measure(rho, hamiltonian):
@@ -185,11 +199,18 @@ def verify_critical_line_property(omega_values, n_dim=10):
     
     symmetry_measures = []
     
+    # Get energy eigenbasis for proper conjugation
+    _, eigvecs = np.linalg.eigh(H)
+    
     for omega in omega_values:
         E = compute_ergotropy(rho, H, omega)
         
-        # Check symmetry under complex conjugation-like operation
-        rho_conj = np.conj(rho)
+        # Transform to energy eigenbasis, conjugate, then transform back
+        # This implements the proper symmetry operation from the theorem
+        rho_energy = eigvecs.conj().T @ rho @ eigvecs
+        rho_conj_energy = np.conj(rho_energy)
+        rho_conj = eigvecs @ rho_conj_energy @ eigvecs.conj().T
+        
         E_conj = compute_ergotropy(rho_conj, H, omega)
         
         symmetry = abs(E - E_conj)

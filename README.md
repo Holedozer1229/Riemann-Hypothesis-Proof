@@ -10,7 +10,7 @@ The **Riemann Hypothesis** is one of the most important unsolved problems in mat
 **Ω-Ergotropy** is a quantum information theoretic quantity that measures the maximum amount of work extractable from a quantum system through unitary operations, with an additional entropy term weighted by parameter Ω.
 
 This work bridges quantum thermodynamics and analytic number theory by proving that:
-> If there exist quantum evolutions that preserve Ω-ergotropy for Ω = 1/2, then the Riemann Hypothesis is true.
+> If there exist quantum evolutions that preserve Ω-ergotropy for Ω = 1/2 and satisfy the spectral coherence condition, then the Riemann Hypothesis is true.
 
 ## Contents
 

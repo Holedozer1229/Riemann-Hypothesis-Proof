@@ -33,12 +33,20 @@ The Riemann zeta function is defined for $\Re(s) > 1$ by
 and extended to the complex plane by analytic continuation.
 \end{definition}
 
+\begin{definition}[Standard Ergotropy]
+For a quantum state $\rho$ on a Hilbert space $\mathcal{H}$ with Hamiltonian $H$, the standard ergotropy is defined as
+\begin{equation}
+\mathcal{E}(\rho, H) = \sup_{U \in \mathcal{U}(\mathcal{H})} \left\{ \text{Tr}[H\rho] - \text{Tr}[HU\rho U^{\dagger}] \right\}
+\end{equation}
+where $\mathcal{U}(\mathcal{H})$ is the group of unitary operators. This quantity represents the maximum amount of work that can be extracted from the quantum state through cyclic unitary operations.
+\end{definition}
+
 \begin{definition}[Ω-Ergotropy]
-For a quantum state $\rho$ on a Hilbert space $\mathcal{H}$, the Ω-ergotropy with respect to a Hamiltonian $H$ and parameter $\Omega \in \mathbb{R}$ is defined as
+For a quantum state $\rho$ on a Hilbert space $\mathcal{H}$, the Ω-ergotropy with respect to a Hamiltonian $H$ and parameter $\Omega \in \mathbb{R}$ is a generalization of standard ergotropy defined as
 \begin{equation}
 \mathcal{E}_{\Omega}(\rho, H) = \sup_{U \in \mathcal{U}(\mathcal{H})} \left\{ \text{Tr}[H\rho] - \text{Tr}[HU\rho U^{\dagger}] + \Omega \cdot \mathcal{S}(U\rho U^{\dagger}) \right\}
 \end{equation}
-where $\mathcal{U}(\mathcal{H})$ is the group of unitary operators and $\mathcal{S}$ denotes the von Neumann entropy.
+where $\mathcal{U}(\mathcal{H})$ is the group of unitary operators and $\mathcal{S}$ denotes the von Neumann entropy. The parameter $\Omega$ weights the entropy contribution, with $\Omega = 0$ recovering standard ergotropy.
 \end{definition}
 
 \begin{definition}[Ω-Ergotropy Preservation]
@@ -46,6 +54,14 @@ A quantum evolution $\Phi$ is said to preserve Ω-ergotropy if for all states $\
 \begin{equation}
 \mathcal{E}_{\Omega}(\Phi(\rho), H) = \mathcal{E}_{\Omega}(\rho, H)
 \end{equation}
+\end{definition}
+
+\begin{definition}[Spectral Coherence Condition]
+A quantum evolution $\Phi$ satisfies the spectral coherence condition if for any state $\rho$ and Hamiltonian $H$ with spectral decomposition $H = \sum_k E_k |k\rangle\langle k|$, the coherence measure
+\begin{equation}
+\mathcal{C}(\rho, H) = \sum_{k \neq j} |\langle k|\rho|j\rangle| \cdot |E_k - E_j|
+\end{equation}
+is preserved under the evolution, i.e., $\mathcal{C}(\Phi(\rho), H) = \mathcal{C}(\rho, H)$.
 \end{definition}
 
 \section{Main Theorem}
