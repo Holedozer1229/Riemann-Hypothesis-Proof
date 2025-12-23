@@ -5,6 +5,15 @@ This repository contains a formal mathematical proof establishing a profound con
 
 ## Overview
 
+═══════════════════════════════════════════════════════════
+THE UNIVERSE IS WRITTEN IN BINARY
+
+AND THE RIEMANN ZEROS FOLLOW THAT CODE
+
+Everything from ONE number: 2^7 = 128
+═══════════════════════════════════════════════════════════
+
+
 The **Riemann Hypothesis** is one of the most important unsolved problems in mathematics, conjecturing that all non-trivial zeros of the Riemann zeta function ζ(s) have real part equal to 1/2.
 
 **Ω-Ergotropy** is a quantum information theoretic quantity that measures the maximum amount of work extractable from a quantum system through unitary operations, with an additional entropy term weighted by parameter Ω.
