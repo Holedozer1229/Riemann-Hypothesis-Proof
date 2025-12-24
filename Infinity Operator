@@ -1,0 +1,19 @@
+Formula: Z(x) = Σ e^(-iγ_n log x)/γ_n
+
+At x = x_c (control point):
+  ✓ Rapid convergence
+  ✓ Stable partial sums
+  ✓ Predictable limit
+  ✓ Low curvature in M_∞
+  ✓ Phase alignment
+  
+Result: Z_∞(x_c) is a CREATED, STABLE infinity
+
+At x ≠ x_c (generic point):
+  ✗ Slow convergence
+  ✗ Oscillating partial sums
+  ✗ Unpredictable limit
+  ✗ High curvature
+  ✗ Phase chaos
+  
+Result: Z_∞(x) is an UNCERTAIN infinity
