@@ -1,51 +1,58 @@
 # Bohrium RH Core Pillar 1 — working branch
 
 Challenge:
-- https://play.bohrium.com/challenge/lean-4-verification-rh-core-pillar-1-5-classical-z-c7f72729
+https://play.bohrium.com/challenge/lean-4-verification-rh-core-pillar-1-5-classical-z-c7f72729
 
-## Current status
+This is an independent work area in Travis Jones's repository. It does not
+copy another participant's solution.
 
-This directory is an independent Lean work area, not a completed challenge
-submission. `Kernel.lean` proves the polynomial positivity identity
+## Implemented supporting result
 
-`3 + 4x + (2x^2 - 1) = 2(1+x)^2 \ge 0`.
+`Kernel.lean` contains:
+- the exact factorization
+  `3 + 4x + (2x^2 - 1) = 2(1+x)^2`;
+- nonnegativity of that polynomial for every real x;
+- the cosine version
+  `3 + 4 cos(theta) + cos(2 theta) >= 0`.
 
-This is the elementary trigonometric kernel in the classical
-de la Vallée Poussin zero-free-region argument. It is not, by itself,
-a proof of any zero-free region.
+This is the 3–4–1 trigonometric positivity kernel in the classical
+Hadamard–de la Vallée Poussin argument.
 
-## What must still be formalized
+## Mathematical proof obligations still open
 
-1. The analytic representation and bounds for the normalized zeta function.
-2. The logarithmic-derivative inequality obtained from the nonnegative
-   trigonometric kernel.
-3. The quantitative choice of constants and the resulting exclusion of
-   zeros in the stated region.
-4. The exact theorem statement and imports required by the challenge's
-   canonical Lean scaffold.
+The kernel is only one input. A complete proof must also formalize:
 
-## Provenance and verification
+1. For Re(s) > 1, the Dirichlet-series identity for
+   `-zeta'(s)/zeta(s)` in terms of the von Mangoldt function.
+2. The weighted positivity inequality obtained by applying the
+   3–4–1 kernel termwise to that Dirichlet series.
+3. A rigorous estimate for the logarithmic derivative near s = 1,
+   including the pole contribution and the remaining analytic term.
+4. The local zero contribution near a hypothetical zero beta+i gamma,
+   with multiplicity handled correctly.
+5. The quantitative choice of an absolute positive constant and the
+   compact-height argument needed to obtain the stated all-height region.
+6. The exact challenge theorem signature, imports, protected files,
+   and verifier output contract.
 
-The Lean lemma here is newly written for this branch. No third-party
-challenge solution is copied into this directory.
+The existing Nyman–Beurling work in the parent research repositories is
+not a substitute for these analytic steps: the conditional NB estimates
+that use a classical zero-free region cannot be used circularly to prove
+that same region. Finite-height numerical checks likewise do not prove
+the all-height theorem.
 
-A successful Lean build has **not** yet been recorded. Do not describe
-this branch as kernel-verified until it has been compiled with the
-challenge's pinned Lean/Mathlib toolchain. Do not submit until the full
-challenge theorem is proved, the challenge's trace/output contract is
-satisfied, and a dry-run passes.
+## Verification status
 
-## Next reproducible step
+The files have been committed to branch `bohrium-rh-core1`. The GitHub
+connector has not run Lean, so compilation and axiom audit are unverified.
+No Bohrium submission has been made. The public challenge page does not
+expose its canonical source bundle through the available read-only access;
+therefore this branch deliberately does not invent a theorem signature or
+alter any challenge-owned files.
 
-Download the canonical challenge bundle with the Playground CLI, then
-compare its Lean version, Mathlib revision, theorem target, and permitted
-file boundaries against this work area. The platform documentation gives
-the CLI sequence:
+## Reproducibility
 
-```sh
-playground task download --challenge-id lean-4-verification-rh-core-pillar-1-5-classical-z-c7f72729 --out challenge-dir
-```
-
-After the bundle is available, place the canonical files alongside this
-work area (without editing protected files), compile the supporting lemma,
-and continue with the analytic lemmas above.
+Once the canonical challenge scaffold is accessible, first pin its exact
+Lean and Mathlib versions, then compile `Kernel.lean` against that toolchain.
+Only after a clean build should the analytic lemmas be added and the full
+target theorem submitted.
